@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>测试页面</title>
+    <!-- 引入插件的css文件 -->
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+
+<body>
+    <section id="container"></section>
+    <!-- 引入插件的js文件 -->
+    <script src="./js/index.js"></script>
+    <script>
+        var imgs = [{
+            url: './imgs/1.jpeg',
+            linkHref: "#"
+        }, {
+            url: './imgs/2.jpeg',
+            linkHref: '1'
+        }, {
+            url: './imgs/3.jpeg',
+            linkHref: '#'
+        }, {
+            url: './imgs/4.jpeg',
+            linkHref: '#'
+        }, {
+            url: './imgs/5.jpeg',
+            linkHref: '#'
+        }];
+        var carousel = new Carousel({
+            rootHtml: '',
+            imgs: imgs
+        })
+        carousel.autoPlay();
+    </script>
+</body>
+</html>

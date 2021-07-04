@@ -1,0 +1,110 @@
+@charset "utf-8";
+@media screen and (max-width:768px) {
+    .container {
+        width: 100%;
+    }
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    width: 400px;
+    height: 300px;
+    overflow: hidden;
+    position: relative;
+}
+
+.carousel {
+    cursor: pointer;
+    display: flex;
+    position: absolute;
+}
+
+.carousel-item {
+    width: 400px;
+    height: 300px;
+    flex-shrink: 0; /*不设置会导致图片设定的宽高不起作用*/
+}
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn {
+    width: 35px;
+    height: 35px;
+    border-radius: 45%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.btn:hover {
+    background-color: rgba(51, 51, 51, 0.8);
+} 
+
+.btn-prev {
+    left: -12px;
+}
+
+.btn-next {
+    right: -12px;
+}
+
+.btn-arrow {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    font-size:0.8em;/*大小*/
+    border-top: 1px solid #fff; /*上面的线条*/
+    border-right: 1px solid #fff;/*右边线条*/
+}
+
+.prev {
+    margin-left: 10px;
+    transform: rotate(-135deg);/*主要是这个旋转45度*/
+}
+
+.next {
+    margin-right: 10px;
+    transform: rotate(45deg);/*主要是这个旋转45度*/
+}
+
+.indicator {
+    padding: 0;
+    margin: 3px;
+    font-size: 0;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 25px;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    left: 50%;
+    bottom: 10px;
+    transform: translateX(-50%);
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.3);
+    margin: 3px;
+}
+
+.dot-active {
+    background-color: rgba(255, 68, 0, 0.9);
+}
+
+.dot:hover {
+    cursor: pointer;
+    background-color: rgba(255, 68, 0, 0.9);
+}
