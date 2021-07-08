@@ -53,7 +53,7 @@
             }, false)
             // 鼠标移出开始自动轮播
             self.container.addEventListener('mouseout', function () {
-                self.autoPlay();
+                // self.autoPlay();
             }, false)
         },
         // 创建可见容器
@@ -88,7 +88,7 @@
         // 创建分页器容器
         createIndicator() {
             var indicator = document.createElement("ul");
-            indicator.classList.add("indicator");
+            indicator.classList.add("indicator", "row-between");
             this.indicator = indicator;
         },
         // 创建分页器
@@ -150,7 +150,6 @@
             this.render(this.container, this.nextButton);
             this.render(this.carousel, this.sliderItems);
             this.render(this.indicator, this.indicators);
-            // this.itemWidth = this.getBoundingRect('.carousel-item').width;
             this.setIndicatorActive();
             this.bindEvent();
         },

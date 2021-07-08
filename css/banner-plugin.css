@@ -24,6 +24,13 @@ body {
 .carousel-item {
     flex-shrink: 0; /*不设置会导致图片设定的宽高不起作用*/
 }
+
+.row-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .flex-center {
     display: flex;
     justify-content: center;
@@ -75,13 +82,9 @@ body {
 
 .indicator {
     padding: 0;
-    margin: 3px;
-    font-size: 0;
     background-color: rgba(255, 255, 255, 0.3);
     border-radius: 25px;
     list-style: none;
-    display: flex;
-    justify-content: space-between;
     position: absolute;
     left: 50%;
     bottom: 10px;
