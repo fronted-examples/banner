@@ -6,6 +6,9 @@
         width: 500,
         height: 300,
         transitionTime: 0.5,
+        indicatorBackgroundColor: 'rgba(255, 255, 255, 0.3)',
+        indicatorDefaultColor: 'rgba(255, 255, 255, 0.3)',
+        indicatorActiveColor: 'rgba(255, 255, 255, 1)',
         intervalTime: 1500
     }
     var prevTime = 0; // 上一次事件触发的时间
@@ -53,14 +56,14 @@
             }, false)
             // 鼠标移出开始自动轮播
             self.container.addEventListener('mouseout', function () {
-                // self.autoPlay();
+                self.autoPlay();
             }, false)
         },
         // 创建可见容器
         createContainer() {
             var container = document.createElement('section');
             container.classList.add('container');
-            this.setCarouselStyle(container);
+            this.setCarouselStyle(container, 'container');
             this.container = container;
         },
         // 创建轮播图容器
@@ -76,19 +79,20 @@
                 img = new Image();
                 img.src = self.state.imgs[i].url;
                 img.setAttribute("class", 'carousel-item');
-                this.setCarouselStyle(img);
+                this.setCarouselStyle(img, 'carousel');
                 self.sliderItems.push(img);
             }
             img = new Image();
             img.src = self.state.imgs[0].url;
             img.setAttribute("class", 'carousel-item');
-            this.setCarouselStyle(img)
-            self.sliderItems.push(img)
+            this.setCarouselStyle(img, 'carousel');
+            self.sliderItems.push(img);
         },
         // 创建分页器容器
         createIndicator() {
             var indicator = document.createElement("ul");
             indicator.classList.add("indicator", "row-between");
+            this.setCarouselStyle(indicator, 'indicator');
             this.indicator = indicator;
         },
         // 创建分页器
@@ -97,6 +101,7 @@
                 var li = document.createElement("li");
                 li.classList.add("dot");
                 li.setAttribute('data-index', i);
+                this.setCarouselStyle(li, 'indicators');
                 this.indicators.push(li);
             }
         },
@@ -130,10 +135,16 @@
                 target.appendChild(elements);
             }
         },
-        // 设置轮播图宽高
-        setCarouselStyle(ele) {
-            ele.style.width = this.state.width + 'px';
-            ele.style.height = this.state.height + 'px';
+        // 设置轮播图和分页器的默认样式
+        setCarouselStyle(ele, type) {
+            if (type === 'container' || type === 'carousel') {
+                ele.style.width = this.state.width + 'px';
+                ele.style.height = this.state.height + 'px';
+            } else if (type === 'indicator') {
+                ele.style.backgroundColor = this.state.indicatorBackgroundColor;
+            } else if (type === 'indicators') {
+                ele.style.backgroundColor = this.state.indicatorDefaultColor;
+            }
         },
         // 初始化
         init() {
@@ -222,11 +233,10 @@
         },
         // 设置激活的dot
         setIndicatorActive() {
-            var self = this
-            for (var i = 0; i < self.indicators.length; i++) {
-                self.indicators[i].classList.remove("dot-active");
-                self.indicators[self.index % (self.sliderItems.length - 1)].classList.add("dot-active")
+            for (var i = 0; i < this.indicators.length; i++) {
+                this.indicators[i].style.backgroundColor = this.state.indicatorDefaultColor
             }
+            this.indicators[this.index % (this.sliderItems.length - 1)].style.backgroundColor = this.state.indicatorActiveColor
         }
     }
 
