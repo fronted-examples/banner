@@ -280,7 +280,7 @@
         }
     }
 
-    // 将_global赋值为全局对象window, (0, eval)('this')会计算出
+    // 将_global赋值为全局对象window, 严格模式下(0, eval)('this')会计算出。因为严格模式下this为undefined;
     _global = (function(){ return this || (0, eval)('this'); }());
     // 判断是否存在模块加载器：module.exports、amd、commonJs，否则直接将插件给全局对象
     if (typeof module !== "undefined" && module.exports) {
