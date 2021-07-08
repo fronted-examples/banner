@@ -11,8 +11,6 @@ body {
 }
 
 .container {
-    width: 400px;
-    height: 300px;
     overflow: hidden;
     position: relative;
 }
@@ -24,8 +22,6 @@ body {
 }
 
 .carousel-item {
-    width: 400px;
-    height: 300px;
     flex-shrink: 0; /*不设置会导致图片设定的宽高不起作用*/
 }
 .flex-center {
